@@ -19,10 +19,10 @@ class Block{
 
 class Blockchain {
     constructor(){
-        this.chain = [this.createGenesis()]
+        this.chain = [this.createGenesis()];
     }
     createGenesis() {
-        return new Block(0, "01/01/2025", "Genesis Block", "0");
+        return new Block(0, "12/06/2025", "Genesis Block", "0");
     }
     latestBlock() {
         return this.chain[this.chain.length - 1];
@@ -34,7 +34,7 @@ class Blockchain {
     }
     checkValid() {
         for (let i = 1; i < this.chain.length; i++) {
-            const currentBlock = this.chain{i};
+            const currentBlock = this.chain[i];
             const previousBlock = this.chain[i - 1];
 
             if (currentBlock.hash !== currentBlock.calculateHash()){
@@ -49,3 +49,9 @@ class Blockchain {
         return true;
     }
 }
+let jsChain = new Blockchain();
+jsChain.addBlock (new Block("06/06/2025", {amount:5}) );
+jsChain.addBlock (new Block("06/12/2025", {amount:10}) );
+
+console.log(JSON.stringify(jsChain, null, 4));
+console.log("is Blockchain valid?" + jsChain.checkValid());
