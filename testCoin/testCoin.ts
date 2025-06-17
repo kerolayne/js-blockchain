@@ -69,3 +69,11 @@ const isValidNewBlock = (newBlock: Block, previousBlock: Block) => {
     // Se todas as verificações passarem, o bloco é válido
     return true;
 };
+
+const isValidBlockStructure = (block: Block) => {
+    return typeof block.index === 'number' // Verifica se o índice é um número
+        && typeof block.hash === 'string' // Verifica se o hash é uma string
+        && typeof block.previousHash === 'string' // Verifica se o previousHash é uma string
+        && typeof block.timestamp === 'number' // Verifica se o timestamp é um número
+        && typeof block.data === 'string'; // Verifica se o data é uma string
+};
