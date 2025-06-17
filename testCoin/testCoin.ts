@@ -77,3 +77,19 @@ const isValidBlockStructure = (block: Block) => {
         && typeof block.timestamp === 'number' // Verifica se o timestamp é um número
         && typeof block.data === 'string'; // Verifica se o data é uma string
 };
+
+const isValidChain = (blockchainToValidate: Block[]): boolean => {
+    const isValidGenesis = (block: Block): boolean => {
+        return JSON.stringify(block) === JSON.stringify(genesisBlock); // Verifica se o bloco é igual ao bloco gênesis
+    }
+    if(!isValidGenesis(blockchainToValidate[0])) {
+        console.log('invalid genesis block');
+        return false; // Se o bloco gênesis não for válido, retorna falso
+    }
+    for (let i = 1; i< blockchainToValidate.length; i++) {
+        if (!isValidNewBlock(blockchainToValidate[i], blockchainToValidate[i - 1])) {
+            return false; // Se algum bloco não for válido, retorna falso
+        }
+    }
+    return true; // Se todos os blocos forem válidos, retorna verdadeiro
+};
