@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016", // ou uma versão mais recente, como "es2018", "es2020", "esnext"
+    "module": "commonjs", // ou "esnext"
+    "outDir": "./dist", // Onde seus arquivos JavaScript compilados serão colocados
+    "strict": true,      // Boa prática, mas pode ser "false" se estiver começando e tiver muitos erros
+    "esModuleInterop": true, // <-- ESTA É A LINHA CRÍTICA! Deve ser 'true'
+    "skipLibCheck": true, // Ajuda a ignorar erros de tipo dentro das bibliotecas instaladas
+    "forceConsistentCasingInFileNames": true // Boa prática
+  },
+  "include": [
+    "**/*.ts" // Isso garante que todos os arquivos .ts no seu projeto (e subpastas) sejam compilados
+  ],
+  "exclude": [
+    "node_modules" // Exclui a pasta node_modules da compilação
+  ]
+}
